@@ -16,4 +16,9 @@ tables = [f for f in os.listdir(job_dir) if '.biom' in f]
 biom = sorted(tables)[-1]
 
 comm = "ln -s %s/%s data/raw/" %(job_dir, biom)
-os.system(comm)
+err = os.system(comm)
+
+if err:
+    print "An error occurred while generating the symlink for data/raw/"
+else:
+    print "Symlink properly generated in data/raw/"
