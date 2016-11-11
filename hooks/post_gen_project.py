@@ -22,7 +22,7 @@ setup_git = True if '{{ cookiecutter.setup_git_repo }}' == "Yes" else False
 #################################################################################
 # NEXT STEPS                                                                    #
 #################################################################################
-print "\n\nCongrats! Your data analysis project directory has been created at %s" %repo_name
+print "\n\nCongrats! Your data analysis project directory has been created at: %s" %repo_name
 
 if job_num.isdigit():
     print "\nSince you specified a job number (%s) you'll want to run 'make' from within the" %job_num
@@ -34,9 +34,9 @@ if job_num.isdigit():
 # SETUP GITHUB REPO                                                             #
 #################################################################################
 if setup_git:
-    git_user = raw_input("Please enter your GitHub user name: ")
+    git_user = raw_input("\nPlease enter your GitHub user name: ")
 
-    comm = "cd mypackage; git init .; git add .; git commit -m 'initial commit';"
+    comm = "cd %s; git init .; git add .; git commit -m 'initial commit';" %repo_name
     comm += "git remote add origin git@github.com:%s/%s.git;" %(git_user, repo_name)
     comm += "git push -u origin master"
 
