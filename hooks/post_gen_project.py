@@ -25,7 +25,7 @@ repo_data_dir = os.path.join(repo, 'data/raw/')
 #################################################################################
 # OTU TABLE DATA                                                                #
 #################################################################################
-if job_dir.isdigit():
+if job_num.isdigit():
     print "Copying OTU table from job %s to %s." %(job_dir, repo_data_dir)
     comm = "ln -s /%s %s" %(job_dir, repo_data_dir)
     os.system(comm)
