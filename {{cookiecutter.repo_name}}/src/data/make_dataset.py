@@ -15,7 +15,7 @@ job_dir = '/home/data_repo/pre_processing/jobs/%s/stage_2/otupick/' %job_num
 tables = [f for f in os.listdir(job_dir) if '.biom' in f]
 biom = sorted(tables)[-1]
 
-comm = "ln -s %s/%s data/raw/" %(job_dir, biom)
+comm = "ln -s -f %s/%s data/raw/" %(job_dir, biom)
 err = os.system(comm)
 
 if err:
