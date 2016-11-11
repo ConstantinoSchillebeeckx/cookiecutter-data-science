@@ -36,7 +36,7 @@ if job_num.isdigit():
 if setup_git:
     git_user = raw_input("\nPlease enter your GitHub user name: ")
 
-    comm = "cd %s; git init .; git add .; git commit -m 'initial commit';" %repo_name
+    comm = "git init .; git add .; git commit -m 'initial commit';"
     comm += "git remote add origin git@github.com:%s/%s.git;" %(git_user, repo_name)
     comm += "git push -u origin master"
 
