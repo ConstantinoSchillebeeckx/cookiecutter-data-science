@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash 
 
 # taken from https://www.viget.com/articles/create-a-github-repo-from-the-command-line
 repo_name=$1
@@ -27,18 +27,18 @@ if [ "$token" = "" ]; then
 fi
 
 if [ "$invalid_credentials" == "1" ]; then
-    return 1
+    exit 1
 fi
 
 echo -n "Creating Github repository '$repo_name' ..."
 curl -u "$username:$token" https://api.github.com/user/repos -d '{"name":"'$repo_name'", "private":true}' > /dev/null 2>&1
 echo " done."
 
-echo -n "Pushing local code to remote ..."
-git init.
+echo "Pushing local code to remote ..."
+git init .
 git add .
-git commit -m "initial commit"
+git commit -m "initial setup"
 git remote add origin git@github.com:$username/$repo_name.git > /dev/null 2>&1
 git push -u origin master > /dev/null 2>&1
-echo " done."
+echo "Done!"
 
