@@ -5,6 +5,8 @@ repo_name=$1
 
 dir_name=`basename $(pwd)`
 
+cd '{{ cookiecutter.repo_name }}'
+
 if [ "$repo_name" = "" ]; then
     echo "Repo name (hit enter to use '$dir_name')?"
     read repo_name
