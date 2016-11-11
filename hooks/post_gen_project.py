@@ -22,7 +22,7 @@ setup_git = True if '{{ cookiecutter.setup_git_repo }}' == "Yes" else False
 #################################################################################
 # NEXT STEPS                                                                    #
 #################################################################################
-print "\n\nCongrats! Your data analysis project directory has been created at %s" %repo
+print "\n\nCongrats! Your data analysis project directory has been created at %s" %repo_name
 
 if job_num.isdigit():
     print "\nSince you specified a job number (%s) you'll want to run 'make' from within the" %job_num
