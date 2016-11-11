@@ -2,7 +2,8 @@
 """
 
 Script is run after cookiecutter creates its cookie and will:
-- create a symlink of OTU table if job_dir was specified
+- print next step text
+- setup GitHub repo if requested
 
 """
 
@@ -12,25 +13,35 @@ import sys, os
 # GLOBALS                                                                       #
 #################################################################################
 job_num = '{{ cookiecutter.job_dir }}'
-job_dir = os.path.join('/home/data_repo/pre_processing/jobs/', job_num, 'stage_2/otupick/')
-repo = '{{ cookiecutter.module_name }}'
-repo_data_dir = os.path.join(repo, 'data/raw/')
-
-
-
+repo = '{{ cookiecutter.repo_name }}'
+setup_git = True if '{{ cookiecutter.setup_git_repo }}' == "Yes" else False
 
 
 
 
 #################################################################################
-# OTU TABLE DATA                                                                #
+# NEXT STEPS                                                                    #
 #################################################################################
+print "Congrats! Your data analysis project directory has been created at %s" %repo
+
 if job_num.isdigit():
+    print "Since you specified a job number (%s) you'll want to run 'make' from within the" %job_num
+    print "project directory and use the command 'data' to setup your /data/raw files."
 
-    # assumes user wants the .biom file that has the longest name
-    otu_tables = [f for f in os.listdir(job_dir) if '.biom' in f]
-    table = os.path.join(job_dir, sorted(otu_tables)[-1])
 
-    print "Copying OTU table from job %s to %s." %(job_dir, repo_data_dir)
-    comm = "ln -s %s %s" %(table, repo_data_dir)
-    os.system(comm)
+
+#################################################################################
+# SETUP GITHUB REPO                                                             #
+#################################################################################
+if setup_git:
+    git_user = raw_input("Please enter your GitHub user name: ")
+
+    comm = "cd mypackage; git init .; git add .; git commit -m 'initial commit';"
+    comm += "git remote add origin git@github.com:%s/%s.git;" %(git_user, repo_name)
+    comm += "git push -u origin master"
+
+
+
+
+if __name__ == '__main__':
+    main()
