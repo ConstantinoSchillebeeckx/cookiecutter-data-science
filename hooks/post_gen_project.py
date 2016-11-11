@@ -34,9 +34,8 @@ if job_num.isdigit():
 # SETUP GITHUB REPO                                                             #
 #################################################################################
 if setup_git:
-    comm = 'bash ' + os.path.join(repo_name, 'src/setup/setup_git_repo.sh')
 
-    err = os.system(comm)
+    err = os.system('bash src/setup/setup_git_repo.sh')
 
     if err: print "Error with GitHub repo setup!"
         
