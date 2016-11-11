@@ -14,7 +14,6 @@ import sys, os
 #################################################################################
 job_num = '{{ cookiecutter.job_dir }}'
 repo_name = '{{ cookiecutter.repo_name }}'
-project_name = '{{ cookiecutter.project_name }}'
 setup_git = True if '{{ cookiecutter.setup_git_repo }}' == "Yes" else False
 
 
@@ -23,7 +22,7 @@ setup_git = True if '{{ cookiecutter.setup_git_repo }}' == "Yes" else False
 #################################################################################
 # NEXT STEPS                                                                    #
 #################################################################################
-print "\n\nCongrats! Your data analysis project directory has been created at: %s" %project_name
+print "\n\nCongrats! Your data analysis project directory has been created at: %s" %repo_name
 
 if job_num.isdigit():
     print "\nSince you specified a job number (%s) you'll want to run 'make' from within the" %job_num
@@ -35,7 +34,7 @@ if job_num.isdigit():
 # SETUP GITHUB REPO                                                             #
 #################################################################################
 if setup_git:
-    comm = os.path.join(project_name, 'src/setup/setup_git_repo.sh'
+    comm = os.path.join(repo_name, 'src/setup/setup_git_repo.sh')
 
     err = os.system(comm)
 
