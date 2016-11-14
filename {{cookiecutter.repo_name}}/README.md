@@ -10,7 +10,9 @@ Project Organization
     ├── Makefile           <- Makefile with commands like `make data` or `make clean`
     ├── README.md          <- The top-level README for developers using this project.
     ├── data
-    │   ├── processed      <- The final, canonical data sets for modeling.
+    │   ├── interim        <- Interim data generated during analysis.
+    │   ├── pcoa           <- Generated PCOA plots.
+    │   ├── phylo          <- Generated phylogenetic trees.
     │   └── raw            <- The original, immutable data dump.
     │
     ├── docs               <- TODO
@@ -33,13 +35,9 @@ Project Organization
     │   ├── data           <- Scripts to download or generate data
     │   │   └── make_dataset.py
     │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── setup          <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
+    │   ├── setup          <- Scripts generically used at time of project setup
     │   │   └── setup_git_repo.sh
     │   │
     │   └── viz            <- Scripts to create exploratory and results oriented visualizations
     │
-    └──
+    └── test_environment.py
