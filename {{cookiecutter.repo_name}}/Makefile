@@ -13,8 +13,12 @@ IS_ANACONDA=$(shell python -c "import sys;t=str('anaconda' in sys.version.lower(
 #################################################################################
 
 ## Make Dataset
-data: requirements
+data:
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py {{ cookiecutter.job_dir }}
+
+## Make notebook TOC
+notebook_toc:
+	$(PYTHON_INTERPRETER) src/setup/make_notebook_toc.py notebooks/
 
 ## Delete all compiled Python files
 clean:
