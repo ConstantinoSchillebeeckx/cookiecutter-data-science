@@ -33,4 +33,5 @@ else:
     print "Symlink properly generated in data/raw/"
 
 # COPY REP_SET
-os.system("ln -s -f %/rep_set.{fna,tre} data/raw" %(job_dir)) 
+os.system("ln -s -f %/rep_set.fna data/raw" %(job_dir)) 
+os.system("ln -s -f %/rep_set.tre data/raw" %(job_dir)) 
