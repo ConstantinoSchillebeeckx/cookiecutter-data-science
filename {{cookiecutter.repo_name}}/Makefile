@@ -18,7 +18,13 @@ data:
 
 ## Make notebook TOC
 notebook_toc:
-	$(PYTHON_INTERPRETER) src/setup/make_notebook_toc.py notebooks/
+	$(PYTHON_INTERPRETER) src/setup/make_notebook_toc.py notebooks/ > notebooks/README.md
+
+## Push to GitHub repo
+push: notebook_toc
+	git add -A
+	git commit -m 'Make Git update'
+	git push
 
 ## Delete all compiled Python files
 clean:
@@ -57,7 +63,7 @@ test_environment:
 
 
 #################################################################################
-# Self Documenting Commands                                                                #
+# Self Documenting Commands                                                     #
 #################################################################################
 
 .DEFAULT_GOAL := show-help
