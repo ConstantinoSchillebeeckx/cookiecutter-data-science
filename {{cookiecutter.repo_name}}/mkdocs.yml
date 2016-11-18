@@ -1,2 +1,1 @@
 site_name: {{cookiecutter.repo_name}}
-theme_dir: {{cookiecutter.repo_name}}
