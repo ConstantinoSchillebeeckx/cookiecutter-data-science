@@ -15,6 +15,7 @@ import sys, os
 job_num = '{{ cookiecutter.job_dir }}'
 repo_name = '{{ cookiecutter.repo_name }}'
 setup_git = True if '{{ cookiecutter.setup_git_repo }}' == "Yes" else False
+private = True if '{{ cookiecutter.open_source_license }}' == 'Not open source' else False
 
 
 
@@ -37,7 +38,7 @@ print "==-----------------------------------------------------------------------
 #################################################################################
 if setup_git:
 
-    err = os.system('bash src/setup/setup_git_repo.sh')
+    err = os.system('bash src/setup/setup_git_repo.sh %s' %repo_name)
 
     if err: print "Error with GitHub repo setup!"
         
@@ -45,5 +46,6 @@ if setup_git:
 #################################################################################
 # SETUP MKDOCS                                                                  #
 #################################################################################
-os.system("mkdocs build")
-os.system("mkdocs gh-deploy")
+if not private:
+    os.system("mkdocs build")
+    os.system("mkdocs gh-deploy")
