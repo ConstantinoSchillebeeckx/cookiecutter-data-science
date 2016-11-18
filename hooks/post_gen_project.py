@@ -42,3 +42,8 @@ if setup_git:
     if err: print "Error with GitHub repo setup!"
         
 
+#################################################################################
+# SETUP MKDOCS                                                                  #
+#################################################################################
+os.system("mkdocs build")
+os.system("mkdocs gh-deploy")
