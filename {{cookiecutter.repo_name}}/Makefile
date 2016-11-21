@@ -28,6 +28,12 @@ stats:
 notebook_toc:
 	$(PYTHON_INTERPRETER) src/setup/make_notebook_toc.py notebooks/ > notebooks/README.md
 
+## Convert report notebooks to html
+report:
+	for l in notebooks/reports/*ipynb; do jupyter nbconvert --to html --execute --ExecutePreprocessor.kernel_name=python $$l; done
+	mv *html reports/
+
+
 ## Push to GitHub repo
 push: notebook_toc
 	git add -A
