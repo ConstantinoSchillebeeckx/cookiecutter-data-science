@@ -70,7 +70,7 @@ target/
 .ipynb_checkpoints/
 
 # exclude raw & interim data from source control by default
-/data/raws
+/data/raw
 /data/interim
 
 # exclude site (will be pushed to gh-pages branch)
