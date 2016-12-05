@@ -49,3 +49,11 @@ if setup_git:
 if not private:
     os.system("mkdocs build")
     os.system("mkdocs gh-deploy")
+
+
+
+
+#################################################################################
+# MOVE INTO PROJECT DIR                                                         #
+#################################################################################
+os.system("cd %s" %repo_name)
