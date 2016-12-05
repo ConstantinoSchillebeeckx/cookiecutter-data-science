@@ -10,8 +10,9 @@
 # should be manually appended to this script.
 
 
+import sys, os
 sys.path.insert(0, '/home/code_repo/python/')
-import sys, os, utils
+import utils
 
 # GLOBALS
 job_num = sys.argv[1]
