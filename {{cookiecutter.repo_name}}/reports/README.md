@@ -7,3 +7,5 @@ In order to generate a finalized report one should:
 2. Run `make report` from the project root - this will generate both .html and .md formats of the reports and automatically place them in the [`reports/`](../reports/) directory.  The two formats are generated so that:
    - the .html format can easily be viewed through a web browser
    - the .md format can easily be viewed on Github
+
+**NOTE:** as a convenience, running `make push` will automatically generate reports.
