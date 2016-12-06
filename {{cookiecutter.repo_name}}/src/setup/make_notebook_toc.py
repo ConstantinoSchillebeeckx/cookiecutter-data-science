@@ -49,14 +49,15 @@ for f in sorted(nbs):
                 level = source[0].count('#') # assume heading string on first line
                 if level == 1: 
                     file_intro = ''.join(source[1:])
-                else:
+                elif level > 1:
                     header = re.sub(r'#+', '', source[0]).strip()
                     toc.append('  ' * (level - 2) + "* [%s](/%s)" %(header, f)) # unfortunately anchor links don't work in the rendered notebooks
 
         print file_intro
-        print " "
-        print "**TOC:**"
-        print '\n'.join(toc)
+        if len(toc):
+            print " "
+            print "**TOC:**"
+            print '\n'.join(toc)
 
     print ""
 

@@ -31,11 +31,13 @@ notebook_toc:
 ## Convert report notebooks to html
 report:
 	for l in notebooks/reports/*ipynb; do jupyter nbconvert --to html --execute --ExecutePreprocessor.kernel_name=python $$l; done
-	mv *html reports/
+	find *html -cmin -0.5 -exec mv {} reports/ \; # mv files created in the last 30s
+	for l in notebooks/reports/*ipynb; do jupyter nbconvert --to markdown --execute --ExecutePreprocessor.kernel_name=python $$l; done
+	find *md -cmin -0.5 -exec mv {} reports/ \; # mv files created in the last 30s
 
 
 ## Push to GitHub repo
-push: notebook_toc
+push: notebook_toc report
 	git add -A
 	git commit -m 'Make Git update'
 	git push
