@@ -4,6 +4,6 @@ In order to generate a finalized report one should:
 
 1. Write up a report using Jupyter notebook, saving it in [`notebooks/reports`](../notebooks/reports/)
    - note that any figure referenced in this notebook should use the `figures/` symlink found at [`notebooks/reports/`](../notebooks/reports/figures/)
-2. Run `make report` - this will generate both .html and .md formats of the reports and automatically place them in the [`reports/`](../reports/) directory.  The two formats are generated so that:
+2. Run `make report` from the project root - this will generate both .html and .md formats of the reports and automatically place them in the [`reports/`](../reports/) directory.  The two formats are generated so that:
    - the .html format can easily be viewed through a web browser
    - the .md format can easily be viewed on Github
