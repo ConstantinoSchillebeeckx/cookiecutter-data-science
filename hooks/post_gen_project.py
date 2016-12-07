@@ -18,6 +18,11 @@ setup_git = True if '{{ cookiecutter.setup_git_repo }}' == "Yes" else False
 private = True if '{{ cookiecutter.open_source_license }}' == 'Not open source' else False
 
 
+#################################################################################
+# SETUP SYMLINK (CANT GET IT TO WORK IN REPO)                                   #
+#################################################################################
+os.system("ln -s reports/figures notebooks/reports/")
+
 
 
 #################################################################################
@@ -39,14 +44,13 @@ print "==-----------------------------------------------------------------------
 if setup_git:
 
     err = os.system('bash src/setup/setup_git_repo.sh %s' %repo_name)
-
     if err: print "Error with GitHub repo setup!"
         
 
 #################################################################################
 # SETUP MKDOCS                                                                  #
 #################################################################################
-if not private:
+if not private and setup_git:
     os.system("mkdocs build")
     os.system("mkdocs gh-deploy")
 
