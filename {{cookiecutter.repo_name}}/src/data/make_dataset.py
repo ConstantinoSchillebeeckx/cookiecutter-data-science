@@ -26,7 +26,8 @@ os.system("rm -rf data/raw/*")
 tables = [f for f in os.listdir(job_dir) if '.biom' in f]
 biom = sorted(tables)[-1]
 
-comm = "ln -s %s/%s data/raw/" %(job_dir, biom)
+# generate symlink to biom table and name it "otu.biom"
+comm = "ln -s %s/%s data/raw/otu.biom" %(job_dir, biom)
 err = os.system(comm)
 
 if err:
