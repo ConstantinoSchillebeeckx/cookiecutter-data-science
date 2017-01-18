@@ -25,7 +25,7 @@ Project Organization
     │       |
     │       └── figures    <- Any figure referenced in a reports notebook should use this dir as
     │                         the reference src directory; this acts as a symlink to the main
-    │                         reporets/figures/ directory.
+    │                         reports/figures/ directory.
     │
     ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
     │   └── figures        <- Generated graphics and figures to be used in reporting

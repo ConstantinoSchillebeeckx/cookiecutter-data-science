@@ -17,11 +17,11 @@ data:
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py {{ cookiecutter.job_dir }}
 	#get_mapping.py -s 81 -o data/raw/AS81_mapping.txt
 
-## Make PCOA
+## Generate PCOA files stored in data/pcoa
 pcoa:
 	bash /home/code_repo/bash/generate_pcoa.sh -o data/pcoa -r data/raw/rep_set.tre -t rdp_kau_taxonomy -b data/raw/otu.biom -m data/raw/ASXX_mapping.txt
 
-## Make stats
+## Generate stats used in analysis
 stats:
 	$(PYTHON_INTERPRETER) run_stat_suite.py data/raw/otu.biom data/raw/ASXX_mapping.txt --grouping_col XXX --group1 XXX --group2 XXX --repset data/raw/rep_set.fna --out data/interim/XXX.xlsx
 
@@ -35,7 +35,6 @@ report:
 	find *html -cmin -0.5 -exec mv {} reports/ \; # mv files created in the last 30s
 	for l in notebooks/reports/*ipynb; do jupyter nbconvert --to markdown --execute --ExecutePreprocessor.kernel_name=python $$l; done
 	find *md -cmin -0.5 -exec mv {} reports/ \; # mv files created in the last 30s
-
 
 ## Push to GitHub repo
 push: notebook_toc report
