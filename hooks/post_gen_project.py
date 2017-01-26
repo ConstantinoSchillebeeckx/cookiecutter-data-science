@@ -22,6 +22,7 @@ private = True if '{{ cookiecutter.open_source_license }}' == 'Not open source' 
 # SETUP SYMLINK (CANT GET IT TO WORK IN REPO)                                   #
 #################################################################################
 os.system("ln -s ../../reports/figures/ notebooks/reports/")
+os.system("ln -s ../../data/interim/ notebooks/explore/")
 
 
 

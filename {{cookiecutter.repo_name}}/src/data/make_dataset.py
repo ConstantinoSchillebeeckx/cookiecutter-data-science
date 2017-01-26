@@ -17,6 +17,7 @@ import utils
 # GLOBALS
 job_num = sys.argv[1]
 job_dir = '/home/data_repo/pre_processing/jobs/%s/stage_2/otupick/' %job_num
+taxa_dir = job_dir.replace('/otupick/','/rdp_taxonomy/')
 
 
 # CLEAN OUT DIR
@@ -36,5 +37,8 @@ else:
     print "Symlink properly generated in data/raw/"
 
 # COPY REP_SET
-os.system("ln -s -f %s/rep_set.fna data/raw" %(job_dir)) 
-os.system("ln -s -f %s/rep_set.tre data/raw" %(job_dir)) 
+os.system("ln -s -f %s/rep_set.fna data/raw" %job_dir) 
+os.system("ln -s -f %s/rep_set.tre data/raw" %job_dir) 
+
+# COPY TAXA FILE
+os.system("ln -s -f %s/rdp_taxa_kau_qiime_format.txt data/raw" %taxa_dir)
