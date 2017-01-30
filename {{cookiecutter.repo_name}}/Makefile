@@ -32,9 +32,9 @@ notebook_toc:
 ## Convert report notebooks to html
 report:
 	for l in notebooks/reports/*ipynb; do jupyter nbconvert --to html --execute --ExecutePreprocessor.kernel_name=python $$l; done
-	find *html -cmin -0.5 -exec mv {} reports/ \; # mv files created in the last 30s
+	find *html -cmin -0.25 -exec mv {} reports/ \; # mv files created in the last 15s
 	for l in notebooks/reports/*ipynb; do jupyter nbconvert --to markdown --execute --ExecutePreprocessor.kernel_name=python $$l; done
-	find *md -cmin -0.5 -exec mv {} reports/ \; # mv files created in the last 30s
+	find *md ! -name 'README.md' -cmin -0.25 -exec mv {} reports/ \; # mv files created in the last 15s
 
 ## Push to GitHub repo
 push: notebook_toc report
