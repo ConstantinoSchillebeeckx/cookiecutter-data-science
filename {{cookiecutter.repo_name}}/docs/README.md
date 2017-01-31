@@ -17,6 +17,7 @@ This workflow assumes a bit of formatting within the notebook:
 1. Only markdown cells with a heading (e.g. #, ##) will be used to populate the table of contents
 2. The heading level of the markdown cell constitutes the hierarchy of the table of contents
 3. Except for the top level (e.g. #) only the heading title will be used in the table of contents; for the top heading, any text used after the heading will be added to the table of contents. For example, a notebook might being with a markdown cell formatted with
+
 > # Introduction
 > 
 > This text will make it into the table of contents
