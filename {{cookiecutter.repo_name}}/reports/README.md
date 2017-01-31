@@ -8,4 +8,4 @@ In order to generate a finalized report one should:
    - the .html format can easily be viewed through a web browser
    - the .md format can easily be viewed on Github
 
-**NOTE:** as a convenience, running `make push` will automatically generate reports.
+:warning: as a convenience, running `make push` will automatically generate reports.
