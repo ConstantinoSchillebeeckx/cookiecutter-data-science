@@ -2,10 +2,18 @@
 
 This document is a simple helper doc to point out various housekeeping issues regarding this cookiecutter. :unicorn:
 
+## Make commands
+
+Various helper make commands have been put together to make working with the cookiecutter easier - this commands are all located in the [`Makefile'](../Makefile)
+
+- `make data`: generate the starting raw data set stored in `data/raw`.
+- `make notebook_toc`: generate table of contents for notebooks, see below.
+- `mak report`: generate finalized versions of the report notebooks in both a *.html* and *.md* format; reports are then placed in `reports/'
+- 'make push': push any changes to the repo to Github, this will also call generate reports and the table of contents.
+
 ## Generated figures
 
 All generated figures should be placed in [`/reports/figures/`](../reports/figures/). It is assumed that many of these figures will be referenced in any report that is generated; when referencing an image from within a report (notebooks which are located in [`/notebooks/reports/`](../notebooks/reports/) the image src should point to the symlink located in [`/notebooks/reports/figures/`](../notebooks/reports/figures). This symlink exists because the exported reports ('make report') assume a relative src which would otherwise not work if this symlink isn't used (see [Issue #58](https://github.com/drivendata/cookiecutter-data-science/issues/58#issuecomment-261743145)) Therefore, when referencing a generated image from within a report notebook you'd use something like `<img src="figures/img.png" />`
-
 
 :warning: when generating reports (`make report`) both an *.html* and *.md* format are generated - SVG is not supported in the *.md* version and will not render properly. :warning: 
 
