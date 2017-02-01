@@ -16,6 +16,7 @@ IS_ANACONDA=$(shell python -c "import sys;t=str('anaconda' in sys.version.lower(
 data:
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py {{ cookiecutter.job_dir }}
 	#get_mapping.py -s 81 -o data/raw/AS81_mapping.txt
+	#filter_samples_from_otu_table.py -i data/raw/otu.biom -o data/raw/otu_AS86.biom --sample_id_fp data/raw/AS86_mapping.txt
 
 ## Generate PCOA files stored in data/pcoa
 pcoa:
