@@ -16,7 +16,7 @@ IS_ANACONDA=$(shell python -c "import sys;t=str('anaconda' in sys.version.lower(
 data:
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py {{ cookiecutter.job_dir }}
 	#get_mapping.py -s 81 -o data/raw/AS81_mapping.txt
-	#filter_samples_from_otu_table.py -i data/raw/otu.biom -o data/raw/otu_AS86.biom --sample_id_fp data/raw/AS86_mapping.txt
+	#filter_samples_from_otu_table.py -i data/raw/otu.biom -o data/raw/otu_AS81.biom --sample_id_fp data/raw/AS81_mapping.txt
 
 ## Generate PCOA files stored in data/pcoa
 pcoa:
@@ -24,7 +24,7 @@ pcoa:
 
 ## Generate stats used in analysis
 stats:
-	$(PYTHON_INTERPRETER) run_stat_suite.py data/raw/otu.biom data/raw/ASXX_mapping.txt --grouping_col XXX --group1 XXX --group2 XXX --repset data/raw/rep_set.fna --out data/interim/XXX.xlsx
+	for d in 4 7 14 21; do run_stat_suite.py data/raw/otu.biom data/raw/AS61_mapping.txt --grouping_col XXX --group1 XXX --group2 XXX --subset DaysIn,$$d --repset data/raw/rep_set.fna --out data/interim/XXX_d$$d.xlsx; done
 
 ## Make notebook TOC
 notebook_toc:
