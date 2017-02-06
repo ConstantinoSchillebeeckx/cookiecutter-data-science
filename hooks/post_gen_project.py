@@ -29,8 +29,8 @@ os.system("ln -s ../../data/interim/ notebooks/explore/")
 #################################################################################
 # SETUP PERMISSIONS TO WORK WITH KOMPYUTA
 #################################################################################
-os.system('chgrp -R writers %s' %repo_name)
-os.system('chmod -R g+w %s' %repo_name)
+os.system('chgrp -R writers .')
+os.system('chmod -R g+w .')
  
 
 
