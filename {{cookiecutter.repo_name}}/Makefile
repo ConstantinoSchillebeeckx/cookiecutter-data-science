@@ -30,7 +30,7 @@ stats:
 notebook_toc:
 	$(PYTHON_INTERPRETER) src/setup/make_notebook_toc.py notebooks/ > notebooks/README.md
 
-## Convert report notebooks to html
+## Convert report notebooks to html & markup
 report:
 	for l in notebooks/reports/*ipynb; do jupyter nbconvert --to html --execute --ExecutePreprocessor.kernel_name=python $$l; done
 	find *html -cmin -0.25 -exec mv {} reports/ \; # mv files created in the last 15s
@@ -38,7 +38,7 @@ report:
 	find *md ! -name 'README.md' -cmin -0.25 -exec mv {} reports/ \; # mv files created in the last 15s
 
 ## Push to GitHub repo
-push: notebook_toc report
+push: notebook_toc
 	git add -A
 	git commit -m 'Make Git update'
 	git push
